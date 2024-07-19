@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:geotagging_marketplace_mobile/pages/guest/product_detail_page.dart';
 import 'package:geotagging_marketplace_mobile/shared/theme.dart'; // Sesuaikan dengan nama file dan path theme.dart Anda
 
 class HomePage extends StatefulWidget {
@@ -49,7 +50,6 @@ class _HomePageState extends State<HomePage> {
                     ))
                 .toList(),
           ),
-          SizedBox(height: 20.0),
           Container(
             height: 100.0,
             color: Colors.transparent,
@@ -74,6 +74,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          SizedBox(height: 20.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
@@ -109,15 +110,15 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 20.0),
           Container(
-            height: 200.0,
+            height: 250.0,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 5,
               itemBuilder: (context, index) {
                 return ProductCard(
                   imageUrl: 'https://via.placeholder.com/150',
-                  productName: 'Nama Produk',
-                  category: 'Kategori Produk',
+                  productName: 'Sawi',
+                  category: 'Sayuran',
                   rating: 4.5,
                 );
               },
@@ -191,13 +192,28 @@ class ProductCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.network(
-                imageUrl,
-                width: 150.0,
-                height: 100.0,
-                fit: BoxFit.cover,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductDetailPage(
+                      imageUrl: imageUrl,
+                      productName: productName,
+                      storeName: 'Nama Toko',
+                      rating: rating,
+                    ),
+                  ),
+                );
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.network(
+                  imageUrl,
+                  width: 150.0,
+                  height: 100.0,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Padding(
@@ -237,6 +253,28 @@ class ProductCard extends StatelessWidget {
                     ],
                   ),
                 ],
+              ),
+            ),
+            SizedBox(height: 8.0),
+            Align(
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Navigasi ke halaman detail produk
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductDetailPage(
+                        imageUrl: imageUrl,
+                        productName: productName,
+                        storeName:
+                            'Nama Toko', // Ganti dengan nama toko sesuai kebutuhan
+                        rating: rating,
+                      ),
+                    ),
+                  );
+                },
+                child: Text('Detail Produk'),
               ),
             ),
           ],
