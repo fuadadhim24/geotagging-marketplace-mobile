@@ -24,6 +24,12 @@ TextStyle greenTS = GoogleFonts.inter(
 TextStyle redTS = GoogleFonts.inter(
   color: redColor,
 );
+TextStyle greyTS = GoogleFonts.inter(
+  color: greyColor,
+);
+TextStyle darkBlueTS = GoogleFonts.inter(
+  color: darkBlueColor,
+);
 
 FontWeight medium = FontWeight.w500;
 FontWeight semiBold = FontWeight.w600;

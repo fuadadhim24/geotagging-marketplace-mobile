@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Product {
-  final String imageUrl;
+  final String imageAsset;
   final String productName;
   final double rating;
-  final double price;
+  final String price;
   final String category;
 
   Product({
-    required this.imageUrl,
+    required this.imageAsset,
     required this.productName,
     required this.rating,
     required this.price,
@@ -20,59 +20,59 @@ class Product {
 class PopularPage extends StatelessWidget {
   final List<Product> products = [
     Product(
-      imageUrl: 'https://via.placeholder.com/150',
+      imageAsset: 'assets/img/sayur8.jpeg',
       productName: 'Produk 1',
       rating: 4.5,
-      price: 100.0,
+      price: '10.000',
       category: 'Murah',
     ),
     Product(
-      imageUrl: 'https://via.placeholder.com/150',
+      imageAsset: 'assets/img/sayur9.jpeg',
       productName: 'Produk 2',
       rating: 4.0,
-      price: 120.0,
+      price: '12.000',
       category: 'Rating Tinggi',
     ),
     Product(
-      imageUrl: 'https://via.placeholder.com/150',
+      imageAsset: 'assets/img/sayur10.jpeg',
       productName: 'Produk 3',
       rating: 4.2,
-      price: 90.0,
+      price: '9.000',
       category: 'Terdekat',
     ),
     Product(
-      imageUrl: 'https://via.placeholder.com/150',
+      imageAsset: 'assets/img/sayur11.jpeg',
       productName: 'Produk 4',
       rating: 4.8,
-      price: 150.0,
+      price: '15.000',
       category: 'Nostalgia',
     ),
     Product(
-      imageUrl: 'https://via.placeholder.com/150',
+      imageAsset: 'assets/img/sayur12.jpeg',
       productName: 'Produk 5',
       rating: 4.3,
-      price: 80.0,
+      price: '8.000',
       category: 'Murah',
     ),
     Product(
-      imageUrl: 'https://via.placeholder.com/150',
+      imageAsset: 'assets/img/sayur13.jpeg',
       productName: 'Produk 6',
       rating: 4.6,
-      price: 110.0,
+      price: '11.000',
       category: 'Rating Tinggi',
     ),
     Product(
-      imageUrl: 'https://via.placeholder.com/150',
+      imageAsset: 'assets/img/sayur1.jpeg',
       productName: 'Produk 7',
       rating: 4.1,
-      price: 95.0,
+      price: '12.300',
       category: 'Terdekat',
     ),
     Product(
-      imageUrl: 'https://via.placeholder.com/150',
+      imageAsset: 'assets/img/sayur2.jpeg',
       productName: 'Produk 8',
       rating: 4.7,
-      price: 130.0,
+      price: '13.000',
       category: 'Nostalgia',
     ),
   ];
@@ -188,8 +188,8 @@ class PopularPage extends StatelessWidget {
               aspectRatio: 3 / 4,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
-                child: Image.network(
-                  product.imageUrl,
+                child: Image.asset(
+                  product.imageAsset,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -219,7 +219,7 @@ class PopularPage extends StatelessWidget {
                   ),
                   SizedBox(height: 4.0),
                   Text(
-                    '\Rp. ${product.price.toStringAsFixed(2)}',
+                    '\Rp. '+product.price,
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,

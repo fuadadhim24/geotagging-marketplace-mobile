@@ -13,29 +13,32 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<String> imgList = [
-    'assets/img/banner1.jpg',
-    'assets/img/banner2.jpg',
-    'assets/img/banner3.jpg',
-    'assets/img/banner4.jpg',
+    'assets/img/banner1.jpeg',
+    'assets/img/banner2.jpeg',
+    'assets/img/banner3.jpeg',
+    'assets/img/banner4.jpeg',
   ];
   List<Map<String, dynamic>> productList = [
     {
-      'imageAsset': 'assets/img/produk1.jpg',
-      'productName': 'Produk ',
-      'category': 'Kategori 1',
+      'imageAsset': 'assets/img/sayur4.jpeg',
+      'productName': 'Sawi ',
+      'category': 'Sayur',
       'rating': 4.5,
+      'price': '12.000',
     },
     {
-      'imageAsset': 'assets/img/produk2.jpg',
-      'productName': 'Produk 2',
-      'category': 'Kategori 2',
+      'imageAsset': 'assets/img/sayur2.jpeg',
+      'productName': 'Selada',
+      'category': 'Sayur',
       'rating': 4.2,
+      'price': '15.000',
     },
     {
-      'imageAsset': 'assets/img/produk3.jpg',
-      'productName': 'Produk 2',
-      'category': 'Kategori 2',
-      'rating': 4.2,
+      'imageAsset': 'assets/img/sayur5.jpeg',
+      'productName': 'Bayam',
+      'category': 'Sayur',
+      'rating': 4.3,
+      'price': '10.000',
     },
   ];
 
@@ -77,7 +80,32 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(right: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Temukan Produk Segar',
+                      textAlign: TextAlign.left,
+                      style: blackTS.copyWith(),
+                    ),
+                    Text(
+                      'di sekitar anda',
+                      style: darkBlueTS.copyWith(
+                        fontSize: 12,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 25,
+                ),
                 CircleContainer(
                   color: darkBlueColor,
                   iconData: Icons.store_outlined,
@@ -106,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Section Title',
+                      'Daftar Produk',
                       style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
@@ -114,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     SizedBox(height: 4.0),
                     Text(
-                      'Sub Title',
+                      'Segar dan Lokal',
                       style: TextStyle(
                         color: Colors.grey,
                       ),
@@ -141,6 +169,7 @@ class _HomePageState extends State<HomePage> {
                   productName: product['productName'],
                   category: product['category'],
                   rating: product['rating'],
+                  price: product['price'],
                 );
               },
             ),
@@ -171,8 +200,8 @@ class CircleContainer extends StatelessWidget {
         Get.toNamed(routeName);
       },
       child: Container(
-        width: 80.0,
-        height: 80.0,
+        width: 70.0,
+        height: 70.0,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: color,
@@ -205,12 +234,14 @@ class ProductCard extends StatelessWidget {
   final String productName;
   final String category;
   final double rating;
+  final String price;
 
   const ProductCard({
     required this.imageAsset,
     required this.productName,
     required this.category,
     required this.rating,
+    required this.price,
   });
 
   @override
@@ -284,7 +315,7 @@ class ProductCard extends StatelessWidget {
                   ),
                   SizedBox(height: 4.0),
                   Text(
-                    '\Rp. 100.000',
+                    '\Rp. $price',
                     style: TextStyle(
                       fontSize: 14.0,
                       fontWeight: FontWeight.bold,

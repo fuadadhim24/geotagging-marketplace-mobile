@@ -90,7 +90,7 @@ class _BottomBarState extends State<BottomBar> {
           child: BottomBarFloating(
             items: items,
             backgroundColor: darkBlueColor, 
-            color: blueColor, 
+            color: whiteColor, 
             colorSelected: Colors.white,
             indexSelected: _selectedIndex,
             onTap: _onItemTapped,

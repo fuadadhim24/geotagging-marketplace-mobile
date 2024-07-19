@@ -207,13 +207,12 @@ class _NearbyPageState extends State<NearbyPage> {
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  'Review: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut magna tempus massa gravida gravida.',
+                  'Review: Memiliki komitmen dalam memberikan pelayanan dan kualitas produk tani yang segar dan berkualitas.',
                   style: TextStyle(fontSize: 14.0),
                 ),
                 SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () {
-                    // Action to view products list
                     print('View products button pressed');
                   },
                   child: Text('Daftar Produk'),
@@ -224,7 +223,8 @@ class _NearbyPageState extends State<NearbyPage> {
           SizedBox(height: 16.0),
           _buildProductContainer(
             title: 'Produk Populer',
-            products: ['Produk A', 'Produk B', 'Produk C'],
+            products: ['Sawi', 'Wortel', 'PakCoy'],
+            img: ['assets/img/sayur5.jpeg', 'assets/img/sayur2.jpeg', 'assets/img/sayur8.jpeg'],
           ),
           SizedBox(height: 16.0),
           Container(
@@ -235,7 +235,7 @@ class _NearbyPageState extends State<NearbyPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.chat_bubble, color: Colors.white),
+                  Icon(Icons.chat_outlined, color: greenColor),
                   SizedBox(width: 8.0),
                   Text(
                     'Hubungi WA',
@@ -252,20 +252,10 @@ class _NearbyPageState extends State<NearbyPage> {
   }
 
   Widget _buildProductContainer(
-      {required String title, required List<String> products}) {
+      {required String title, required List<String> products, required List<String> img}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
         SizedBox(height: 8.0),
         Container(
           height: 100.0,
@@ -275,14 +265,35 @@ class _NearbyPageState extends State<NearbyPage> {
             itemCount: products.length,
             itemBuilder: (context, index) {
               return Container(
-                margin: EdgeInsets.all(8.0),
-                padding: EdgeInsets.all(8.0),
-                color: Colors.grey[300],
-                child: Center(
-                  child: Text(
-                    products[index],
-                    style: TextStyle(fontSize: 16.0),
-                  ),
+                margin: EdgeInsets.only(right: 10),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      margin: EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(img[index]),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        color: whiteColor,
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(5),
+                            bottomRight: Radius.circular(5)),
+                      ),
+                      child: Column(
+                        children: [
+                          Text(products[index]),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               );
             },

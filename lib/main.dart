@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:geotagging_marketplace_mobile/pages/guest/detail_merchant_page.dart';
+import 'package:geotagging_marketplace_mobile/pages/guest/merchant_list_page.dart';
 import 'package:geotagging_marketplace_mobile/pages/guest/merchant_page.dart';
 import 'package:geotagging_marketplace_mobile/pages/guest/popular_page.dart';
 import 'package:geotagging_marketplace_mobile/pages/guest/produk_page.dart';
@@ -20,9 +22,8 @@ class MyApp extends StatelessWidget {
         // GetPage(name: '/home', page: () => const HomePage()),
         // GetPage(name: '/iot', page: () => const IotPage()),
         GetPage(name: '/bottom-bar', page: () => const BottomBar()),
-        GetPage(name: '/merchant-page', page: () => MerchantPage()),
+        GetPage(name: '/merchant-page', page: () => MerchantListPage()),
         GetPage(name: '/popular-page', page: () => PopularPage()),
-        GetPage(name: '/produk-page', page: () => ProdukPage()),
       ],
     );
   }

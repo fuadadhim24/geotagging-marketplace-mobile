@@ -164,10 +164,10 @@ class ProductDetailPage extends StatelessWidget {
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
-                        _buildProductCard('assets/img/produk1.jpg', 'Nasi Goreng', '4.5'),
-                        _buildProductCard('assets/img/produk2.jpg', 'Ayam Goreng', '4.2'),
-                        _buildProductCard('assets/img/produk3.jpg', 'Soto Ayam', '4.7'),
-                        _buildProductCard('assets/img/produk4.jpg', 'Bakso Malang', '4.3'),
+                        _buildProductCard('assets/img/sayur1.jpeg', 'Sawi', '4.5'),
+                        _buildProductCard('assets/img/sayur2.jpeg', 'Selada', '4.2'),
+                        _buildProductCard('assets/img/sayur5.jpeg', 'Bayam', '4.7'),
+                        _buildProductCard('assets/img/sayur8.jpeg', 'Kacang', '4.3'),
                       ],
                     ),
                   ),
