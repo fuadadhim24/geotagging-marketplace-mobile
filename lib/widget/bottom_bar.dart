@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:geotagging_marketplace_mobile/pages/guest/home_page.dart';
+import 'package:geotagging_marketplace_mobile/pages/guest/profile_page.dart';
 import 'package:geotagging_marketplace_mobile/shared/theme.dart';
 
 const List<TabItem> items = [
@@ -65,6 +66,7 @@ class _BottomBarState extends State<BottomBar> {
         children: [
           HomePage(),
           // IotPage(),
+          ProfilePage(),
         ],
       ),
       bottomNavigationBar: Container(
