@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:geotagging_marketplace_mobile/pages/guest/product_detail_page.dart';
-import 'package:geotagging_marketplace_mobile/shared/theme.dart'; // Sesuaikan dengan nama file dan path theme.dart Anda
+import 'package:geotagging_marketplace_mobile/shared/theme.dart';
+import 'package:get/get.dart'; // Sesuaikan dengan nama file dan path theme.dart Anda
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -73,23 +74,24 @@ class _HomePageState extends State<HomePage> {
           Container(
             height: 100.0,
             color: Colors.transparent,
+            padding: EdgeInsets.only(right: 20),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 CircleContainer(
-                  color: greenColor,
+                  color: darkBlueColor,
                   iconData: Icons.store_outlined,
                   title: 'Toko',
+                  routeName: '/merchant-page',
                 ),
-                CircleContainer(
-                  color: darkBlueColor,
-                  iconData: Icons.eco_outlined,
-                  title: 'Produk',
+                SizedBox(
+                  width: 10,
                 ),
                 CircleContainer(
                   color: greenColor,
                   iconData: Icons.trending_up_rounded,
-                  title: 'Populer',
+                  title: 'Produk',
+                  routeName: '/popular-page',
                 ),
               ],
             ),
@@ -153,14 +155,21 @@ class CircleContainer extends StatelessWidget {
   final Color color;
   final IconData iconData;
   final String title;
+  final String routeName; // Parameter untuk menampung nama rute navigasi
 
-  const CircleContainer(
-      {required this.color, required this.iconData, required this.title});
+  const CircleContainer({
+    required this.color,
+    required this.iconData,
+    required this.title,
+    required this.routeName, // Tambahkan parameter routeName
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(routeName);
+      },
       child: Container(
         width: 80.0,
         height: 80.0,
@@ -173,12 +182,14 @@ class CircleContainer extends StatelessWidget {
           children: [
             Icon(
               iconData,
-              color: whiteColor,
+              color: Colors.white,
               size: 24,
             ),
+            SizedBox(height: 4.0),
             Text(
               title,
-              style: whiteTS.copyWith(
+              style: TextStyle(
+                color: Colors.white,
                 fontSize: 11,
               ),
             )
@@ -271,30 +282,21 @@ class ProductCard extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(height: 4.0),
+                  Text(
+                    '\Rp. 100.000',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
+                  ),
                 ],
               ),
             ),
             SizedBox(height: 8.0),
             Align(
               alignment: Alignment.center,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Navigasi ke halaman detail produk
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProductDetailPage(
-                        imageAsset: imageAsset,
-                        productName: productName,
-                        storeName:
-                            'Nama Toko', // Ganti dengan nama toko sesuai kebutuhan
-                        rating: rating,
-                      ),
-                    ),
-                  );
-                },
-                child: Text('Detail Produk'),
-              ),
             ),
           ],
         ),
