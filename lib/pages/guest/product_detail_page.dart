@@ -86,21 +86,17 @@ class ProductDetailPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 12.0),
-                  // Pilihan delivery
                   ListTile(
                     leading: Icon(Icons.local_shipping),
                     title: Text('Pilihan Delivery'),
                     onTap: () {
-                      // Handle action when delivery option is tapped
                     },
                   ),
                   Divider(),
-                  // Map lokasi
                   ListTile(
                     leading: Icon(Icons.map),
                     title: Text('Lokasi'),
                     onTap: () {
-                      // Handle action when location is tapped
                     },
                   ),
                   Divider(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:geotagging_marketplace_mobile/pages/guest/home_page.dart';
+import 'package:geotagging_marketplace_mobile/pages/guest/nearby_page.dart';
 import 'package:geotagging_marketplace_mobile/pages/guest/profile_page.dart';
 import 'package:geotagging_marketplace_mobile/shared/theme.dart';
 
@@ -57,6 +58,7 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
         controller: _pageController,
         onPageChanged: (index) {
           setState(() {
@@ -65,7 +67,7 @@ class _BottomBarState extends State<BottomBar> {
         },
         children: [
           HomePage(),
-          // IotPage(),
+          NearbyPage(),
           ProfilePage(),
         ],
       ),
@@ -73,7 +75,7 @@ class _BottomBarState extends State<BottomBar> {
         margin: EdgeInsets.only(bottom: 15, left: 10, right: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(
-              30), // Sesuaikan nilai radius sesuai keinginan
+              30),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -87,8 +89,8 @@ class _BottomBarState extends State<BottomBar> {
           borderRadius: BorderRadius.circular(20),
           child: BottomBarFloating(
             items: items,
-            backgroundColor: darkBlueColor, // Sesuaikan warna sesuai kebutuhan
-            color: blueColor, // Sesuaikan warna sesuai kebutuhan
+            backgroundColor: darkBlueColor, 
+            color: blueColor, 
             colorSelected: Colors.white,
             indexSelected: _selectedIndex,
             onTap: _onItemTapped,
