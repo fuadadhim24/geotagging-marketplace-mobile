@@ -12,10 +12,30 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<String> imgList = [
-    'https://via.placeholder.com/600x200',
-    'https://via.placeholder.com/600x200',
-    'https://via.placeholder.com/600x200',
-    'https://via.placeholder.com/600x200',
+    'assets/img/banner1.jpg',
+    'assets/img/banner2.jpg',
+    'assets/img/banner3.jpg',
+    'assets/img/banner4.jpg',
+  ];
+  List<Map<String, dynamic>> productList = [
+    {
+      'imageAsset': 'assets/img/produk1.jpg',
+      'productName': 'Produk ',
+      'category': 'Kategori 1',
+      'rating': 4.5,
+    },
+    {
+      'imageAsset': 'assets/img/produk2.jpg',
+      'productName': 'Produk 2',
+      'category': 'Kategori 2',
+      'rating': 4.2,
+    },
+    {
+      'imageAsset': 'assets/img/produk3.jpg',
+      'productName': 'Produk 2',
+      'category': 'Kategori 2',
+      'rating': 4.2,
+    },
   ];
 
   @override
@@ -41,7 +61,7 @@ class _HomePageState extends State<HomePage> {
             items: imgList
                 .map((item) => Container(
                       child: Center(
-                        child: Image.network(
+                        child: Image.asset(
                           item,
                           fit: BoxFit.cover,
                           width: 1000.0,
@@ -100,9 +120,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    // Handle action when "Lihat Semua" button is pressed
-                  },
+                  onPressed: () {},
                   child: Text('Lihat Semua'),
                 ),
               ],
@@ -113,17 +131,18 @@ class _HomePageState extends State<HomePage> {
             height: 250.0,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 5,
+              itemCount: productList.length,
               itemBuilder: (context, index) {
+                final product = productList[index];
                 return ProductCard(
-                  imageUrl: 'https://via.placeholder.com/150',
-                  productName: 'Sawi',
-                  category: 'Sayuran',
-                  rating: 4.5,
+                  imageAsset: product['imageAsset'],
+                  productName: product['productName'],
+                  category: product['category'],
+                  rating: product['rating'],
                 );
               },
             ),
-          ),
+          )
         ],
       ),
     );
@@ -171,13 +190,13 @@ class CircleContainer extends StatelessWidget {
 }
 
 class ProductCard extends StatelessWidget {
-  final String imageUrl;
+  final String imageAsset;
   final String productName;
   final String category;
   final double rating;
 
   const ProductCard({
-    required this.imageUrl,
+    required this.imageAsset,
     required this.productName,
     required this.category,
     required this.rating,
@@ -198,7 +217,7 @@ class ProductCard extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => ProductDetailPage(
-                      imageUrl: imageUrl,
+                      imageAsset: imageAsset,
                       productName: productName,
                       storeName: 'Nama Toko',
                       rating: rating,
@@ -208,8 +227,8 @@ class ProductCard extends StatelessWidget {
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
-                child: Image.network(
-                  imageUrl,
+                child: Image.asset(
+                  imageAsset,
                   width: 150.0,
                   height: 100.0,
                   fit: BoxFit.cover,
@@ -265,7 +284,7 @@ class ProductCard extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => ProductDetailPage(
-                        imageUrl: imageUrl,
+                        imageAsset: imageAsset,
                         productName: productName,
                         storeName:
                             'Nama Toko', // Ganti dengan nama toko sesuai kebutuhan
